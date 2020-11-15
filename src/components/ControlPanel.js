@@ -10,7 +10,7 @@ const ControlPanelContainer = styled.div`
   font-size: 12px;
   margin: 20px;
   padding: 5px;
-  width: 300px;
+  min-width: 300px;
   min-height: 500px;
 `;
 

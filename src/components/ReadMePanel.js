@@ -19,9 +19,11 @@ const ReadMePanel = () => {
   const [content, setContent] = useState('');
 
   useEffect(() => {
-    const apiUrl = `https://raw.githubusercontent.com/${gitHubUserName}/${currentRepo}/master/README.md`;
-    currentRepo && axios.get(apiUrl).then(data => {
-      setContent(data.data);
+    
+    const apiUrl = `https://api.github.com/repos/${gitHubUserName}/${currentRepo}/readme`;
+    currentRepo && axios.get(apiUrl).then(({data}) => {
+      setContent(atob(data.content));
+    }).then(data => {
     }).catch(error => setContent('No README.md file'));
   }, [setContent, gitHubUserName, currentRepo, currentError]);
   
